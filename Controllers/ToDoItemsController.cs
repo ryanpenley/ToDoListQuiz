@@ -31,14 +31,27 @@ namespace ToDoListQuiz.Controllers
         {
             string userId = _userManager.GetUserId(User)!;
 
-            var applicationDbContext = _context.ToDoItem.Include(t => t.AppUser);
+            List<ToDoItem> toDoItems = new List<ToDoItem>();
+
+            toDoItems = await _context.ToDoItem.Where(t => t.AppUserId== userId && t.Completed == false).ToListAsync();
+
+
+
+
+            return View(toDoItems);
+        }        // GET: CompletedItems
+        public async Task<IActionResult> CompletedItems()
+        {
+            string userId = _userManager.GetUserId(User)!;
 
             List<ToDoItem> toDoItems = new List<ToDoItem>();
 
+            toDoItems = await _context.ToDoItem.Where(t => t.AppUserId== userId && t.Completed == true).ToListAsync();
 
 
 
-            return View(await applicationDbContext.ToListAsync());
+
+            return View(toDoItems);
         }
 
         // GET: ToDoItems/Details/5
@@ -115,8 +128,6 @@ namespace ToDoListQuiz.Controllers
         }
 
         // POST: ToDoItems/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AppUserId,DateCreated,DueDate,Completed")] ToDoItem toDoItem)
