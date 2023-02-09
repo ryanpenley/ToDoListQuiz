@@ -7,7 +7,7 @@
 <h1>Completed Items</h1>
 
 <p>
-    <a asp-action="Index">Back to To-do's</a> |
+    <a class="btn btn-outline-white" asp-action="Index">Back to To-do's</a>
 </p>
 <table class="table">
     <thead>
@@ -30,11 +30,6 @@
     <tbody>
         @foreach (var item in Model)
         {
-            @if (item.Completed == false)
-            {
-            }else
-            {
-            }
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -46,9 +41,9 @@
                     @Html.DisplayFor(modelItem => item.DueDate)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-white">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-white">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>
         }

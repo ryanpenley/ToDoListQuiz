@@ -1,0 +1,68 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269 76" width="269" height="76">
+	<title>ToDoneLogo-svg</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m3.49 2.46h261.75v72h-261.75z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m10.56 9.24h123.77v58.52h-123.77z"/>
+		</clipPath>
+	</defs>
+	<style>
+		.s0 { fill: none;stroke: #000000;stroke-width: 4.5 } 
+		.s1 { fill: #000000 } 
+		.s2 { fill: #ffffff } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g id="Layer">
+			<path id="Layer" class="s0" d="m3.5 2.5h261.7v72h-261.7z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp2)">
+		<g id="Layer">
+			<path id="Layer" class="s1" d="m10.6 9.2h124.4v59.2h-124.4z"/>
+		</g>
+	</g>
+	<g id="Layer">
+		<g id="Layer">
+			<g id="Layer">
+				<path id="Layer" class="s2" d="m58.4 30.3h-6.7v-2.3h15.8v2.3h-6.7v17.3h-2.4z"/>
+			</g>
+		</g>
+	</g>
+	<g id="Layer">
+		<g id="Layer">
+			<g id="Layer">
+				<path id="Layer" fill-rule="evenodd" class="s2" d="m82.4 48c-5.7 0-10.2-4.6-10.2-10.2 0-5.7 4.5-10.2 10.2-10.2 5.6 0 10.2 4.5 10.2 10.2 0 5.6-4.6 10.2-10.2 10.2zm7.6-10.2c0-4.3-3.4-7.7-7.6-7.7-4.3 0-7.7 3.4-7.7 7.7 0 4.3 3.4 7.7 7.7 7.7 4.2 0 7.6-3.4 7.6-7.7z"/>
+			</g>
+		</g>
+	</g>
+	<g id="Layer">
+		<g id="Layer">
+			<g id="Layer">
+				<path id="Layer" fill-rule="evenodd" class="s1" d="m159.8 28.1h8.4c6.3 0 10.6 3.9 10.6 9.8 0 6-4.3 9.9-10.6 9.9h-8.4zm8.2 14.5c3 0 5-1.8 5-4.7 0-2.9-2-4.7-5-4.7h-2.5v9.4z"/>
+			</g>
+		</g>
+	</g>
+	<g id="Layer">
+		<g id="Layer">
+			<g id="Layer">
+				<path id="Layer" fill-rule="evenodd" class="s1" d="m191.4 48.2c-6 0-10.7-4.6-10.7-10.3 0-5.6 4.7-10.2 10.7-10.2 5.9 0 10.7 4.6 10.7 10.2 0 5.7-4.8 10.3-10.7 10.3zm4.9-10.3c0-2.7-2.2-5-4.9-5-2.8 0-5 2.3-5 5 0 2.8 2.2 5 5 5 2.7 0 4.9-2.2 4.9-5z"/>
+			</g>
+		</g>
+	</g>
+	<g id="Layer">
+		<g id="Layer">
+			<g id="Layer">
+				<path id="Layer" class="s1" d="m205.1 28.1h4.7l7.4 10v-10h5.6v19.7h-4.6l-7.5-10.1v10.1h-5.6z"/>
+			</g>
+		</g>
+	</g>
+	<g id="Layer">
+		<g id="Layer">
+			<g id="Layer">
+				<path id="Layer" class="s1" d="m227 28.1h13.5v4.6h-7.9v2.9h7.1v4.5h-7.1v3h8.2v4.7h-13.8z"/>
+			</g>
+		</g>
+	</g>
+</svg>
