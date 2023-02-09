@@ -16,7 +16,7 @@ namespace ToDoListQuiz.Models
         public DateTime DateCreated { get; set; }
         [Display(Name = "Due Date")]
         [DataType(DataType.Date)]
-        public DateTime? DueDate { get; set; }
+        public DateTime DueDate { get; set; }
         [Required]
         public bool Completed { get; set; }
 

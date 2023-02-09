@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,18 +16,28 @@ namespace ToDoListQuiz.Controllers
     public class AccessoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public AccessoriesController(ApplicationDbContext context)
+        public AccessoriesController(ApplicationDbContext context, 
+                                        UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager; 
         }
 
         // GET: Accessories
         public async Task<IActionResult> Index()
         {
-              return _context.Accessory != null ? 
-                          View(await _context.Accessory.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Accessory'  is null.");
+
+            string? userId = _userManager.GetUserId(User)!;
+
+            IEnumerable<Accessory> model = await _context.Accessory
+                                            .Where(a => a.AppUserId == userId)
+                                            .Include(a => a.ToDoItem)
+                                            .ToListAsync();
+
+
+            return View(model);
         }
 
         // GET: Accessories/Details/5
@@ -54,14 +65,16 @@ namespace ToDoListQuiz.Controllers
         }
 
         // POST: Accessories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,AppUserId")] Accessory accessory)
         {
+            ModelState.Remove("AppUserId");
+
             if (ModelState.IsValid)
             {
+                accessory.AppUserId = _userManager.GetUserId(User);
+
                 _context.Add(accessory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,8 +99,6 @@ namespace ToDoListQuiz.Controllers
         }
 
         // POST: Accessories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AppUserId")] Accessory accessory)
@@ -117,6 +128,7 @@ namespace ToDoListQuiz.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id", accessory.AppUserId);
             return View(accessory);
         }
 

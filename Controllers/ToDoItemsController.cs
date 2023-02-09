@@ -35,7 +35,6 @@ namespace ToDoListQuiz.Controllers
 
             List<ToDoItem> toDoItems = new List<ToDoItem>();
 
-            //List<ToDoItem> to = await _context.ToDoItem.Where(t => t.AppUserId == userId).ToListAsync();
 
 
 
@@ -88,7 +87,7 @@ namespace ToDoListQuiz.Controllers
                 toDoItem.AppUserId = _userManager.GetUserId(User);
                 toDoItem.DateCreated = DateTime.UtcNow;
 
-                toDoItem.DueDate = DateTime.SpecifyKind(toDoItem.DueDate!.Value, DateTimeKind.Utc);
+                toDoItem.DueDate = DateTime.SpecifyKind(toDoItem.DueDate, DateTimeKind.Utc);
                 toDoItem.Completed = false;
 
 
@@ -131,6 +130,11 @@ namespace ToDoListQuiz.Controllers
             {
                 try
                 {
+                    // Reformat Created Date 
+                    toDoItem.DateCreated = DateTime.SpecifyKind(toDoItem.DateCreated, DateTimeKind.Utc);
+                    // Reformat DueDate
+                    toDoItem.DueDate = DateTime.SpecifyKind(toDoItem.DueDate, DateTimeKind.Utc);
+
                     _context.Update(toDoItem);
                     await _context.SaveChangesAsync();
                 }
